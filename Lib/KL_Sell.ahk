@@ -24,8 +24,6 @@ KL_Sell(lineNumb, isAuto = 0)
 
 	SYS_CompReady()
 
-	SYS_ActiveCNIClient()
-
     ;~ Ping cang line number
 	if (lineNumb = 1)
 	{

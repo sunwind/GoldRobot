@@ -48,18 +48,21 @@ KL_Buy(drt)
 
 
 	SYS_CompReady()
-
+	
 	;~ xinzeng shijiadan WINDOW
 	WinWait, ahk_class SunAwtDialog,,5
 	{
 		WinActivate, ahk_class SunAwtDialog
-		Sleep, 100
-		Send, {click 155,144} ;click the comprot number
-		Send, {End}{ShiftDown}{Home}{ShiftUp}%GV_CompNumb%
-		Send, {click 52, 380}{Tab}
+		;~ Sleep, 200
+		Send, {Click 170, 145} ;click the comprot number
+		Send, {End}
+		Send, +{Home}
+		Send, %GV_CompNumb%
+		Send, {Tab}
+		;~ Send, {click 52, 380}{Tab}
 	}
 	SYS_CompFinish()
-	;~ if trace("buying and click`nGV_CompMode: " . GV_CompMode,2)
+	if !trace("buying and click`nGV_CompMode: " . GV_CompMode,2)
 	SYS_Click("ok")
 
 	SYS_LogComport(drt)

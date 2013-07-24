@@ -15,10 +15,10 @@
 
 SetWorkingDir %A_ScriptDir%
 Process, Priority, , High
-SetBatchLines, -1
+;~ SetBatchLines, -1
 SetDefaultMouseSpeed, 0
-SetMouseDelay, 0
-SetKeyDelay, 0, 0
+;~ SetMouseDelay, 0
+;~ SetKeyDelay, 0, 0
 SetTitleMatchMode, 1
 CoordMode, Window
 SendMode Input
@@ -153,12 +153,13 @@ return
 ;~ Start Auto Ping Cang
 Timer_AutoSellStart:
 	;~ SetTimer, Handler_AutoSell, Off
-	;~ [TODO] Can't faster than 2 sec here
-	SetTimer, Handler_AutoSell, 2000
+	;~ [TODO] Can't faster than 1 sec here
+	gosub, Handler_AutoSell
+	SetTimer, Handler_AutoSell, 1500
 return
 
 Handler_AutoSell:
-
+;~ TM_MSec_Before := A_TickCount
 ;~ trace("Handler_AutoSell`nSYS_GetHoldingDirection: " . SYS_GetHoldingDirection().2)
 
 	if SYS_GetHoldingDirection() = Const_Nothing
@@ -192,7 +193,8 @@ Handler_AutoSell:
 		Trace("Auto Selling`nWIN`nLEVEL: " . _newPro . "`nTARGET: " . GV_autoSellPrice)
 	}
 	;~ Trace("Auto Ping Cang ing",3)
-
+;~ TM_MSec_After := A_TickCount
+;~ if Trace("耗时: " . TM_MSec_After - TM_MSec_Before . " 毫秒", 2)
 	if (abs(_newPro) >= GV_autoSellPrice)
 	{
 		KL_Sell(1,1) ; is auto sell

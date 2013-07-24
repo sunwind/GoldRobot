@@ -25,7 +25,7 @@ KL_SetCompNumb()
 				GV_CompNumb = %newNumb%
 			if GV_CompNumb > 10
 				GV_CompNumb = 10
-			Trace("Comport Number change to:`n" GV_CompNumb)
+			Trace("Comport Number change to:`n" . GV_CompNumb)
 		}
 	}
 	;~ IniWrite, %GV_CompNumb%, %File_Ini%, GlobalVars, ComportNumber
