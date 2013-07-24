@@ -62,7 +62,7 @@ KL_Buy(drt)
 		;~ Send, {click 52, 380}{Tab}
 	}
 	SYS_CompFinish()
-	if !trace("buying and click`nGV_CompMode: " . GV_CompMode,2)
+	;~ if !trace("buying and click`nGV_CompMode: " . GV_CompMode,2)
 	SYS_Click("ok")
 
 	SYS_LogComport(drt)
