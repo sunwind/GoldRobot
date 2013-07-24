@@ -25,7 +25,7 @@
 
 	;~ GV_CompMode ? _mStr := "1: NORMAL" : _mStr := "0: FAST"
 
-	trace("Comport mode change to `n" . _mStr)
+	trace("Comport mode change to `n" . GV_CompMode)
 	;~ IniWrite, %GV_CompMode%, %File_Ini%, GlobalVars, ComportMode
 
 	SYS_CompFinish()

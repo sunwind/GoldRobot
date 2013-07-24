@@ -40,7 +40,12 @@ File_Ico = %A_ScriptDir%\goldrobot.ico
 ;~ [Const]
 Const_PRICE_UP := "PriceUp"
 Const_PRICE_DOWN := "PriceDown"
+
 Const_Nothing := "Nothing"
+
+Const_HoldingUp := "HoldingUp"
+Const_HoldingDown := "HoldingDown"
+
 
 ;~ [Global Var]
 GV_CNIClientPath := 0
@@ -53,8 +58,10 @@ GV_CompNumb := 1
 ;~ Cancels every actions right now
 GV_isBusy := 0
 
-;~ GV_HoldingNumb := 0
-GV_HoldingDrt := Const_Nothing
+;~ Holding info
+GV_HoldingDrt := 0
+GV_HoldingProceedLevel := 0
+
 GV_priceUpGreenColor := "0x009401"
 GV_priceDownRedColor := "0x0000F0"
 ;~ GV_priceNormalColor := "0xE2C1D0"
@@ -160,9 +167,9 @@ Handler_AutoSell:
 		gosub, Timer_AutoSellStop
 		return
 	}
-	
+
 	trace("AUTO SELLING",4)
-	
+
 	_newPro := SYS_GetHoldingProceed()
 
 	;~ if !_newPro
@@ -189,7 +196,7 @@ Handler_AutoSell:
 	if (abs(_newPro) >= GV_autoSellPrice)
 	{
 		KL_Sell(1,1) ; is auto sell
-		
+
 		;~ when user sell will stop autosell, so here keep run
 		gosub, Timer_AutoSellStart
 		return

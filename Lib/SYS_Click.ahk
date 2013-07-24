@@ -12,7 +12,7 @@ SYS_Click(where)
         return
     }
 	
-	WinActivate, ahk_class SunAwtDialog, , 5
+	WinActivate, ahk_class SunAwtDialog
     {
         if (where = "ok")
         {

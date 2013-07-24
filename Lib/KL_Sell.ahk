@@ -1,7 +1,7 @@
 ﻿;~ Just Ping Cang with line number
 KL_Sell(lineNumb, isAuto = 0)
 {
-	global GV_priceDownRedColor, GV_priceUpGreenColor, GV_HoldingDrt, GV_CompMode, Const_Nothing
+	global GV_priceDownRedColor, GV_priceUpGreenColor, GV_HoldingDrt, GV_CompMode, Const_HoldingUp, Const_HoldingDown, Const_Nothing
 
 	SYS_GetHoldingDirection()
 
@@ -12,8 +12,18 @@ KL_Sell(lineNumb, isAuto = 0)
 		return 0
 	}
 
-    SYS_CompReady()
-	
+	if GV_CompMode
+	{
+		_drt := SYS_GetHoldingLikeDrt()
+		If !SYS_PriceWatcher(_drt) ;if buying down drt is red, so more red is good for me)
+		{
+			trace("SELL Canceled!")
+			return 0
+		}
+	}
+
+	SYS_CompReady()
+
 	SYS_ActiveCNIClient()
 
     ;~ Ping cang line number
@@ -47,21 +57,8 @@ KL_Sell(lineNumb, isAuto = 0)
 		Sleep, 50
 		Send, {Click 760,318}
 	}
-	
-	if !GV_CompMode
-	{
-		SYS_Click("ok")
-	}
-	else if SYS_PriceWatcher(GV_HoldingDrt) ;if buying down drt is red, so more red is good for me
-	{
-		SYS_Click("ok")
-	}
-	else
-	{
-		trace("SELL`nCANCELED!")
-		return 0 ; is user abort watcher
-	}
-	
+
+	SYS_Click("ok")
 	SYS_CompFinish()
 
 	if isAuto

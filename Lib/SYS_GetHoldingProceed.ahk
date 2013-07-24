@@ -6,7 +6,7 @@
 ;~ 否则,没有持仓就直接返回false
 SYS_GetHoldingProceed()
 {
-    global GV_HoldingDrt, Const_PRICE_UP, Const_PRICE_DOWN, Const_Nothing
+    global GV_HoldingDrt, Const_HoldingUp, Const_HoldingDown, Const_Nothing
 
     _numb := 1
 
@@ -67,7 +67,7 @@ SYS_GetHoldingProceed()
         if (SYS_GetHoldingProceedLevel(x1,y1,x2,y2) = Const_Nothing)
         {
             ;~ GV_HoldingDrt := SYS_GetHoldingDirection()
-            if (SYS_GetHoldingProceedLevel() = Const_PRICE_DOWN)
+            if (SYS_GetHoldingProceedLevel() = Const_HoldingDown)
             {
                 _numb := -_numb
                 ;~ trace("_drt is :" . _drt,2)
