@@ -54,15 +54,15 @@ KL_Buy(drt)
 	{
 		WinActivate, ahk_class SunAwtDialog
 		;~ Sleep, 200
-		Send, {Click 170, 145} ;click the comprot number
+		Send, {Click 183, 149} ;click the comprot number
 		Send, {End}
 		Send, +{Home}
 		Send, %GV_CompNumb%
-		Send, {Tab}
-		;~ Send, {click 52, 380}{Tab}
+		Send, {Tab} 
+		Send, {click 58, 358}{Tab}
 	}
 	SYS_CompFinish()
-	;~ if !trace("buying and click`nGV_CompMode: " . GV_CompMode,2)
+	if trace("buying and click`nGV_CompMode: " . GV_CompMode,2)
 	SYS_Click("ok")
 
 	SYS_LogComport(drt)

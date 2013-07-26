@@ -16,14 +16,14 @@ SYS_Click(where)
     {
         if (where = "ok")
         {
-            Send, {click 52,350}
+            Send, {click 58,358}
             Sleep, 100
             WinWait, 注意 ahk_class SunAwtDialog,,5
                 WinKill
         }
         else if (where = "cancel")
         {
-            Send, {click 155,350}
+            Send, {click 158,358}
         }
         else
         {

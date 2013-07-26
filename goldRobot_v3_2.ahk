@@ -16,7 +16,7 @@
 SetWorkingDir %A_ScriptDir%
 Process, Priority, , High
 ;~ SetBatchLines, -1
-SetDefaultMouseSpeed, 0
+;~ SetDefaultMouseSpeed, 0
 ;~ SetMouseDelay, 0
 ;~ SetKeyDelay, 0, 0
 SetTitleMatchMode, 1
@@ -132,7 +132,7 @@ KL_SetCompMode()
 return
 
 ;~ system
-#^F::
+#^f::
 KL_ISkyWinFormat()
 return
 

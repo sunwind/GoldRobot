@@ -10,7 +10,18 @@ OpenWin_CNIClient()
             try
 			{
                 Run, %GV_CNIClientPath%
-				WinWait, 登录 ahk_class SunAwtDialog,,10
+				WinWait, 登录 ahk_class SunAwtDialog,,15
+				if ErrorLevel
+				{
+					if trace("Func OpenWin_CNIClient`:`nCan't Run CNIClient!`n`nTry again?",2)
+					{
+						OpenWin_CNIClient()
+					}
+					else
+					{
+						return 0
+					}
+				}
 			}
             catch
                 Trace("OpenWin_CNIClient is wrong!",1)
@@ -24,7 +35,7 @@ OpenWin_CNIClient()
 	
 	SYS_CompReady()
 	
-	WinWait, ahk_class SunAwtFrame,,10
+	WinWait, ahk_class SunAwtFrame,,5
 	WinActivate, ahk_class SunAwtFrame
 	{
 		WinGetPos,cniX,cniY,cniW,cniH
