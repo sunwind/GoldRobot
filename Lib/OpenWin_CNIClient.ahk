@@ -28,7 +28,7 @@ OpenWin_CNIClient()
 		}
 		WinActivate, 登录 ahk_class SunAwtDialog
 		{
-			Sleep, 100
+			Sleep, 500
 			Send, {Click 330,187}111555{Enter}
 		}
 	}

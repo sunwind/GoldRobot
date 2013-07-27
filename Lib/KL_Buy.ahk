@@ -53,7 +53,7 @@ KL_Buy(drt)
 	WinWait, ahk_class SunAwtDialog,,5
 	{
 		WinActivate, ahk_class SunAwtDialog
-		;~ Sleep, 200
+		Sleep, 200
 		Send, {Click 183, 149} ;click the comprot number
 		Send, {End}
 		Send, +{Home}

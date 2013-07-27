@@ -16,7 +16,7 @@ OpenWin_iSky()
 		try
 		{
 			Run, %GV_iSkyPath%
-			WinWait, ahk_class MAINWND_WX,,5
+			WinWait, ahk_class MAINWND_WX,,15
 		}
 		catch
 		{
@@ -28,7 +28,7 @@ OpenWin_iSky()
 	
 	WinActivate, ahk_class MAINWND_WX
 	{
-		Sleep, 100
+		Sleep, 500
 		MouseGetPos,_x,_y,_win
 		Send, {Click 133,40}
 		MouseMove, _x,_y
