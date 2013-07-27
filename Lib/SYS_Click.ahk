@@ -1,9 +1,9 @@
-﻿;~ Click the buy or ping cang window
+;~ Click the buy or ping cang window
 ;arg where String: allow "ok" or "cancel"
 SYS_Click(where)
 {
     SYS_CompReady()
-    
+
 	WinWait, ahk_class SunAwtDialog,,5
     if ErrorLevel
     {
@@ -11,14 +11,14 @@ SYS_Click(where)
         trace("No where I can click...",2)
         return
     }
-	
+
 	WinActivate, ahk_class SunAwtDialog
     {
         if (where = "ok")
         {
             Send, {click 58,358}
             Sleep, 100
-            WinWait, 注意 ahk_class SunAwtDialog,,5
+            WinWait, ע�� ahk_class SunAwtDialog,,5
                 WinKill
         }
         else if (where = "cancel")

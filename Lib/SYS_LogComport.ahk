@@ -1,4 +1,4 @@
-﻿;~ record comport to local log file
+;~ record comport to local log file
 ;~ arg: drt string , allow: "up", "down" and "ping"
 SYS_LogComport(drt,isAuto = 0)
 {
@@ -17,7 +17,7 @@ SYS_LogComport(drt,isAuto = 0)
     }
 	else
 		trace("SYS_LogComport arg1 wrong",1)
-	
+
     File_log = %A_ScriptDir%\goldrobot_log.txt
 	compTime := A_YYYY . "-" . A_MM . "-" . A_DD . "`|" . A_Hour . "`:" . A_Min . "`:" .  A_Sec
 	appendStr := compTime . "`|" . _str . "`r`n"
@@ -27,6 +27,6 @@ SYS_LogComport(drt,isAuto = 0)
 	}
 	catch e
 	{
-		trace("funcLog_Write 失败",1)
+		trace("funcLog_Write ʧ��",1)
 	}
 }

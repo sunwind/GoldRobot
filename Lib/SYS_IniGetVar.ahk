@@ -1,4 +1,4 @@
-﻿SYS_IniGetVar()
+SYS_IniGetVar()
 {
 	global GV_CompMode,	GV_CompNumb, GV_CNIClientPath, GV_iSkyPath, File_Ini, GV_CompMode
 
@@ -58,9 +58,9 @@
 		}
 		;~ IniWrite, %GV_iSkyPath%, %File_Ini%, Clients, iSkyPath
     }
-	
+
 	SYS_IniWrite(1) ; force to save
-	
+
 	if !trace("Hi~`nI'm ready to work!`n`nContinue?",2)
 		ExitApp
 	return

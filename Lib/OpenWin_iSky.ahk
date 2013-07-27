@@ -1,10 +1,10 @@
-﻿
+
 OpenWin_iSky()
 {
 	global GV_iSkyPath
-	
+
 	SYS_CompReady()
-	
+
 	if (GV_iSkyPath = "nothing") or !GV_iSkyPath
     {
 		Trace("iSky client not found")
@@ -24,8 +24,8 @@ OpenWin_iSky()
 			return 0
 		}
 	}
-	
-	
+
+
 	WinActivate, ahk_class MAINWND_WX
 	{
 		Sleep, 500

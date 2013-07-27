@@ -1,4 +1,4 @@
-﻿KL_ISkyWinFormat()
+KL_ISkyWinFormat()
 {
     IfWinExist, ahk_class MAINWND_WX
     {

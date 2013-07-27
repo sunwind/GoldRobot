@@ -1,9 +1,9 @@
-﻿;~ 获取当前盈利级别
-;~ 2013-7-16 4:41:18 确保完成.大概需要一秒钟的时间运行
-;~ 通过判断"浮动盈亏"下面的彩色数字位置和颜色得到盈亏的位数
-;~ 返回:
-;~ 达到位数的起点,如:100,1000等,表示超过一百,一千
-;~ 否则,没有持仓就直接返回false
+;~ ��ȡ��ǰӯ������
+;~ 2013-7-16 4:41:18 ȷ�����.�����Ҫһ���ӵ�ʱ������
+;~ ͨ���ж�"����ӯ��"����Ĳ�ɫ����λ�ú���ɫ�õ�ӯ����λ��
+;~ ����:
+;~ �ﵽλ�������,��:100,1000��,��ʾ����һ��,һǧ
+;~ ����,û�гֲ־�ֱ�ӷ���false
 SYS_GetHoldingProceed()
 {
     global GV_HoldingDrt, Const_HoldingUp, Const_HoldingDown, Const_Nothing
@@ -26,10 +26,10 @@ SYS_GetHoldingProceed()
         _numb *= 10
         ;~ Sleep, 2000
         ;~ MouseMove, x1,y1,10
-        ;~ trace("循环了: " . A_Index . "次`nx1: " . x1 . "和x2:" .x2)
+        ;~ trace("ѭ����: " . A_Index . "��`nx1: " . x1 . "��x2:" .x2)
         if A_Index < 3
         {
-            ;~ 百位数减少7像素
+            ;~ ��λ������7����
             x1 -= 7
             x2 -= 7
         }
@@ -72,7 +72,7 @@ SYS_GetHoldingProceed()
                 _numb := -_numb
                 ;~ trace("_drt is :" . _drt,2)
             }
-            ;~ trace("跳出循环`,返回值: " . _numb,2)
+            ;~ trace("����ѭ��`,����ֵ: " . _numb,2)
             return %_numb%
             break
         }

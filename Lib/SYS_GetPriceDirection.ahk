@@ -1,8 +1,8 @@
-ï»¿SYS_GetPriceDirection()
+SYS_GetPriceDirection()
 {
 	global GV_PriceDrt, Const_PRICE_UP, Const_PRICE_DOWN, GV_priceUpGreenColor, GV_priceDownRedColor, Const_Nothing
 
-	PixelGetColor, pgColor, 88, 280 ;è¿™ä¸ªåæ ‡ç”¨æ¥æ£€æŸ¥ä»·æ ¼å˜åŒ–æ–¹å‘
+	PixelGetColor, pgColor, 88, 280 ;Õâ¸ö×ø±êÓÃÀ´¼ì²é¼Û¸ñ±ä»¯·½Ïò
 	;trace("price color: " . pgColor)
 	if ErrorLevel
 		trace("SYS_GetPriceDrt Error!", 1)

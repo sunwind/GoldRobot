@@ -1,4 +1,4 @@
-﻿;~ Show some words to interchange informations between user and system.
+;~ Show some words to interchange informations between user and system.
 ;~ arg: vText String : Some words
 ;~ arg: isDie String :
 ;~ 	"" = Normal traytip

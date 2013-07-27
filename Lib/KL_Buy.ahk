@@ -1,4 +1,4 @@
-﻿;~ buy
+;~ buy
 ;~ arg: what string allow:"up" and "down"
 KL_Buy(drt)
 {
@@ -48,7 +48,7 @@ KL_Buy(drt)
 
 
 	SYS_CompReady()
-	
+
 	;~ xinzeng shijiadan WINDOW
 	WinWait, ahk_class SunAwtDialog,,5
 	{
@@ -58,7 +58,7 @@ KL_Buy(drt)
 		Send, {End}
 		Send, +{Home}
 		Send, %GV_CompNumb%
-		Send, {Tab} 
+		Send, {Tab}
 		Send, {click 58, 358}{Tab}
 	}
 	SYS_CompFinish()

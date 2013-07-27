@@ -1,4 +1,4 @@
-﻿Mouse_2Center()
+Mouse_2Center()
 {
 	;~ CoordMode, Screen
 	_x := A_ScreenWidth / 2

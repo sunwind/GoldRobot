@@ -1,9 +1,9 @@
-﻿KL_SetCompMode()
+KL_SetCompMode()
 {
 	SYS_CompReady()
 
     global GV_CompMode, File_Ini
-	
+
 	InputBox, _CompMode, Do you like me help you watch the price?
 		,NOW`: %GV_CompMode%`n`n1 `= Normal`n2 `= Fast,,350, 250
     if (errorlevel = 0)

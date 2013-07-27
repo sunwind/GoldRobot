@@ -1,4 +1,4 @@
-﻿;~ Finished the Comport
+;~ Finished the Comport
 ;~ return: true or false
 SYS_CompFinish()
 {

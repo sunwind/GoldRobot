@@ -1,10 +1,10 @@
-﻿KL_SetAutoSellPrice()
+KL_SetAutoSellPrice()
 {
     ;~ Force to stop any comport
     SYS_CompReady()
-    
+
     global GV_autoSellPrice
-    
+
 	InputBox, vPrice, Change AutoPingCang Level
 		,NOW`: %GV_autoSellPrice%`n`n1 `= 100`n2 `= 1`,000`n3 `= 10,000,,350, 250
     if (errorlevel = 0)

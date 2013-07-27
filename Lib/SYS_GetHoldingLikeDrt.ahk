@@ -1,4 +1,4 @@
-﻿SYS_GetHoldingLikeDrt()
+SYS_GetHoldingLikeDrt()
 {
 	global GV_HoldingDrt, Const_HoldingUp, Const_HoldingDown, Const_Nothing, Const_PRICE_UP, Const_PRICE_DOWN
 

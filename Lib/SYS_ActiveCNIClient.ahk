@@ -1,8 +1,8 @@
-ï»¿;~ æ¿€æ´»ä¸»ç•Œé¢
+;~ ¼¤»îÖ÷½çÃæ
 SYS_ActiveCNIClient()
 {
-	IfWinExist, ä¸­å›½åŒ—æ–¹é‡‘é“¶ä¸šæœ‰é™å…¬å¸ ahk_class SunAwtFrame
+	IfWinExist, ÖĞ¹ú±±·½½ğÒøÒµÓĞÏŞ¹«Ë¾ ahk_class SunAwtFrame
 		WinActivate
-	IfWinNotExist, ä¸­å›½åŒ—æ–¹é‡‘é“¶ä¸šæœ‰é™å…¬å¸ ahk_class SunAwtFrame
+	IfWinNotExist, ÖĞ¹ú±±·½½ğÒøÒµÓĞÏŞ¹«Ë¾ ahk_class SunAwtFrame
 		trace("CNI Client not exist!",1)
 }

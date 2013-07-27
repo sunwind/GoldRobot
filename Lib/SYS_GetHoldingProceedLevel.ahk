@@ -1,4 +1,4 @@
-﻿;~ check is user have holding
+;~ check is user have holding
 ;~ returns : down ; up; nothing
 SYS_GetHoldingProceedLevel(x1 = 943 ,y1 = 183 ,x2 = 949, y2 = 187)
 {

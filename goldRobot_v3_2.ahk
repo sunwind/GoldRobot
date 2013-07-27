@@ -1,4 +1,4 @@
-ï»¿;~ Gold Robot Version 0.3.0.2
+;~ Gold Robot Version 0.3.0.2
 ;~ fjxhkj@gmail.com
 
 ;~ AutoHotkey Version 1.1.1.1
@@ -194,7 +194,7 @@ Handler_AutoSell:
 	}
 	;~ Trace("Auto Ping Cang ing",3)
 ;~ TM_MSec_After := A_TickCount
-;~ if Trace("è€—æ—¶: " . TM_MSec_After - TM_MSec_Before . " æ¯«ç§’", 2)
+;~ if Trace("ºÄÊ±: " . TM_MSec_After - TM_MSec_Before . " ºÁÃë", 2)
 	if (abs(_newPro) >= GV_autoSellPrice)
 	{
 		KL_Sell(1,1) ; is auto sell

@@ -1,11 +1,11 @@
-﻿;~ set buying number
+;~ set buying number
 KL_SetCompNumb()
 {
 	;~ Force to stop any comport
     SYS_CompReady()
-	
+
     Global File_Ini, GV_CompNumb
-	
+
 
 	InputBox, newNumb, title,Please input your BUY`-Number`nNOW is: %GV_CompNumb%,, 400,200
 	if Errorlevel

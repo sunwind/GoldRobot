@@ -1,4 +1,4 @@
-﻿;~ Just Ping Cang with line number
+;~ Just Ping Cang with line number
 KL_Sell(lineNumb, isAuto = 0)
 {
 	global GV_priceDownRedColor, GV_priceUpGreenColor, GV_HoldingDrt, GV_CompMode, Const_HoldingUp, Const_HoldingDown, Const_Nothing
