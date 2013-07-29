@@ -18,14 +18,14 @@ Process, Priority, , High
 SetBatchLines, -1
 SetDefaultMouseSpeed, 0
 SetMouseDelay, 0
-SetKeyDelay, 0, 0
+;~ SetKeyDelay, 0
 SetTitleMatchMode, 1
 CoordMode, Window
-SendMode Input
+;~ SendMode Input
 
 ; [SYS] autostart section
 SplitPath, A_ScriptFullPath, SYS_ScriptNameExt, SYS_ScriptDir, SYS_ScriptExt, SYS_ScriptNameNoExt, SYS_ScriptDrive
-SYS_ScriptVersion = 1.2.3.2
+SYS_ScriptVersion = 1.2.3.3
 SYS_ScriptBuild = 2013-7-29
 SYS_ScriptInfo = %SYS_ScriptNameNoExt% %SYS_ScriptVersion%
 
@@ -194,13 +194,13 @@ Handler_AutoSell:
 		;~ [TODO] if losing, 10000 is the line
 		_newPro /= 10
 		;~ Lost
-		Trace("自动平仓中!`n亏损`n" . _newPro . " 以上`n目标线: " . GV_autoSellPrice)
+		Trace("自动平仓中!`n亏损`n" . _newPro . "`n目标线: " . GV_autoSellPrice)
 
 	}
 	else
 	{
 		;~ Proceeds
-		Trace("自动平仓中!`n获利`n" . _newPro . " 以上`n目标线: " . GV_autoSellPrice)
+		Trace("自动平仓中!`n获利`n" . _newPro . "`n目标线: " . GV_autoSellPrice)
 	}
 	;~ Trace("Auto Ping Cang ing",3)
 	;~ TM_MSec_After := A_TickCount
