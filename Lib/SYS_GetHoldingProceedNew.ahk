@@ -31,7 +31,7 @@ SYS_GetHoldingProceedNew()
 
         if (ErrorLevel = 0)
         {
-            trace("找到了: 盈利绿色`nx: " . proX . "`ny: " . proY)
+            ;~ trace("找到了: 盈利绿色`nx: " . proX . "`ny: " . proY)
             
            
             if proX < 926
@@ -51,7 +51,7 @@ SYS_GetHoldingProceedNew()
 
             if (ErrorLevel = 0)
             {
-                trace("找到了: 亏损红色`nx: " . proX . "`ny: " . proY)
+                ;~ trace("找到了: 亏损红色`nx: " . proX . "`ny: " . proY)
                 
                 if proX < 926
                 {

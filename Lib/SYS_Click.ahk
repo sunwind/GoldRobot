@@ -18,7 +18,7 @@ SYS_Click(where)
         {
             Send, {click 58,358}
             Sleep, 100
-            WinWait, зЂвт ahk_class SunAwtDialog,,5
+            WinWait, зЂвт ahk_class SunAwtDialog,,15
                 WinKill
         }
         else if (where = "cancel")
