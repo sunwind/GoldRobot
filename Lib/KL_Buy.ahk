@@ -19,7 +19,7 @@ KL_Buy(drt)
 		}
 		else
 		{
-			trace("Buy UP`nCANCELED!")
+			trace("开多头`n被取消!")
 			return 0 ; is user abort watcher
 		}
 
@@ -37,13 +37,13 @@ KL_Buy(drt)
 		}
 		else
 		{
-			trace("Buy DOWN`nCANCELED!")
+			trace("开空头`n被取消!")
 			return 0 ; is user abort watcher
 		}
 	}
 	else
 	{
-		trace("KL_Buy arg Wrong!",1)
+		trace("KL_Buy 参数 错误!",1)
 	}
 
 

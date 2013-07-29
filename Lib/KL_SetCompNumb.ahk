@@ -7,7 +7,7 @@ KL_SetCompNumb()
     Global File_Ini, GV_CompNumb
 
 
-	InputBox, newNumb, title,Please input your BUY`-Number`nNOW is: %GV_CompNumb%,, 400,200
+	InputBox, newNumb, 设置开仓数量,请输入您每次开仓的手数`n当前为: %GV_CompNumb%,, 400,200
 	if Errorlevel
     {
 		Trace("Comport Number`n NOT change!")
@@ -16,7 +16,7 @@ KL_SetCompNumb()
 	{
 		if newNumb is not Integer
 		{
-			Trace("Are U kidding me?`nNothing changed!")
+			Trace("开仓手数`n没有更改")
 		}
 		else
 		{
@@ -25,7 +25,7 @@ KL_SetCompNumb()
 				GV_CompNumb = %newNumb%
 			if GV_CompNumb > 10
 				GV_CompNumb = 10
-			Trace("Comport Number change to:`n" . GV_CompNumb)
+			Trace("开仓手数更新为:`n" . GV_CompNumb)
 		}
 	}
 	;~ IniWrite, %GV_CompNumb%, %File_Ini%, GlobalVars, ComportNumber

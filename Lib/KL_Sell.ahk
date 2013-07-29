@@ -8,7 +8,7 @@ KL_Sell(lineNumb, isAuto = 0)
 	if (GV_HoldingDrt = Const_Nothing)
 	{
 		SYS_CompFinish()
-		Trace("There is no holding")
+		Trace("目前没有持仓...")
 		return 0
 	}
 
@@ -17,7 +17,7 @@ KL_Sell(lineNumb, isAuto = 0)
 		_drt := SYS_GetHoldingLikeDrt()
 		If !SYS_PriceWatcher(_drt) ;if buying down drt is red, so more red is good for me)
 		{
-			trace("SELL Canceled!")
+			trace("平仓 终止!")
 			return 0
 		}
 	}

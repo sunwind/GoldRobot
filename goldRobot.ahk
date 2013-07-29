@@ -1,4 +1,4 @@
-;~ Gold Robot Version 0.3.0.2
+;~ Gold Robot
 ;~ fjxhkj@gmail.com
 
 ;~ AutoHotkey Version 1.1.1.1
@@ -25,8 +25,8 @@ SendMode Input
 
 ; [SYS] autostart section
 SplitPath, A_ScriptFullPath, SYS_ScriptNameExt, SYS_ScriptDir, SYS_ScriptExt, SYS_ScriptNameNoExt, SYS_ScriptDrive
-SYS_ScriptVersion = 0.3.0.2
-SYS_ScriptBuild = 2013-7-20
+SYS_ScriptVersion = 1.2.3.2
+SYS_ScriptBuild = 2013-7-29
 SYS_ScriptInfo = %SYS_ScriptNameNoExt% %SYS_ScriptVersion%
 
 ;~ [Files]
@@ -159,7 +159,7 @@ return
 ;~ [Timer and Handler]
 ;~ Stop Auto Ping Cang
 Timer_AutoSellStop:
-	trace("Auto sell OFF")
+	trace("自动平仓 `- 关闭")
 	SetTimer, Handler_AutoSell, Off
 return
 
@@ -184,7 +184,7 @@ Handler_AutoSell:
 		return
 	}
 
-	trace("AUTO SELLING",4)
+	trace("正在进行`n自动平仓",4)
 	
 	;~ 新版的检查盈亏情况算法也是相当快速的
 	_newPro := SYS_GetHoldingProceedNew()
@@ -194,13 +194,13 @@ Handler_AutoSell:
 		;~ [TODO] if losing, 10000 is the line
 		_newPro /= 10
 		;~ Lost
-		Trace("AUTO SELLING`nLOST`nLEVEL: " . _newPro . "`nTARGET: " . GV_autoSellPrice)
+		Trace("自动平仓中!`n亏损`n" . _newPro . " 以上`n目标线: " . GV_autoSellPrice)
 
 	}
 	else
 	{
 		;~ Proceeds
-		Trace("Auto Selling`nWIN`nLEVEL: " . _newPro . "`nTARGET: " . GV_autoSellPrice)
+		Trace("自动平仓中!`n获利`n" . _newPro . " 以上`n目标线: " . GV_autoSellPrice)
 	}
 	;~ Trace("Auto Ping Cang ing",3)
 	;~ TM_MSec_After := A_TickCount
@@ -220,11 +220,11 @@ HL_UpdateInfoTip:
 	{
 		if GV_CompMode
 		{
-			Trace("NORMAL Mode",3)
+			Trace("常规模式 with " . GV_CompNumb,3)
 		}
 		else
 		{
-			Trace("FAST Mode",3)
+			Trace("快速模式 with " . GV_CompNumb,3)
 		}
 	}
 	else IfWinNotActive, ahk_class SunAwtFrame
@@ -239,9 +239,9 @@ TRAY_SetMenus:
 	Menu,tray,NoStandard
 	Menu,tray,Icon, %File_Ico%
 	Menu,tray,Tip, %SYS_ScriptInfo%
-	Menu,tray,Add, About %SYS_ScriptInfo%, Handler_Help
+	Menu,tray,Add, 关于 %SYS_ScriptInfo%, Handler_Help
 	Menu,tray,Add ;The line
-	Menu,tray,Add, Exit, SYS_Exit
+	Menu,tray,Add, 退出, SYS_Exit
 return
 
 ;~ Tray Menu Helper
@@ -250,10 +250,15 @@ Handler_Help:
 		Run, %File_Readme%
 return
 
+SYS_Reload:
+	Reload
+return
+
 on_Exit:
 	;~ trace("I'm leaving~")
 	SYS_IniWrite(1)
 	SetTimer, HL_UpdateInfoTip, Off
+	ExitApp
 
 SYS_Exit:
 	ExitApp

@@ -16,14 +16,14 @@ SYS_IniGetVar()
     {
 		if !trace("How to run CNIClient`?`n`nI need it to work!`nFind it onece `,`nI'll remember it...`nThanks!",2)
 		{
-			trace("OK`, you don't need me`, I'm going away...",1)
+			trace("好吧,再见`~",1)
 		}
         ;~ first time run me
         ;~ [ini] let user choice the CNIClient client exe file to save to ini file
         FileSelectFile, SelectedFile, S3, CNIClient.exe , select CNIClient luncher, CNIClient (*.exe)
         if SelectedFile =
 		{
-            Trace("You didn't select anything`.`nSee you later`~",1)
+            Trace("CNI交易客户端是必须的!`n请删除同名ini文件并重试`.`n程序即将自动退出`~",1)
 		}
         else
 		{
@@ -48,7 +48,7 @@ SYS_IniGetVar()
 			FileSelectFile, SelectedFile, S3, iSky.exe , select iSky app luncher, iSky (*.exe)
 			if SelectedFile =
 			{
-				Trace("You didn't select anything.")
+				Trace("你没有选择iSky`,以后不再提示`.")
 				GV_iSkyPath := "nothing"
 			}
 			else
@@ -61,7 +61,7 @@ SYS_IniGetVar()
 
 	SYS_IniWrite(1) ; force to save
 
-	if !trace("Hi~`nI'm ready to work!`n`nContinue?",2)
+	if !trace("你好~`n我准备好了!`n`n点击确定`,我开始工作`.",2)
 		ExitApp
 	return
 }

@@ -10,13 +10,13 @@ trace(vText, isDie = 0)
 	if (isDie = 1)
 	{
 		Suspend , On
-		MsgBox, 16, !!! I'm DIED !!!, %vText%, 5
+		MsgBox, 16, !!! ÷¬√¸¥ÌŒÛ !!!, %vText%, 5
 		ExitApp
 	}
 	else if (isDie = 2)
 	{
 		Suspend , On
-		MsgBox, 36,Question !, %vText%
+		MsgBox, 36,Ã·Œ  !, %vText%
 		Suspend, off
 		IfMsgBox  yes
 			return true
@@ -35,7 +35,7 @@ trace(vText, isDie = 0)
 	}
 	else
 	{
-		TrayTip, Attention please !, %vText%, 31,1
+		TrayTip,! «Î◊¢“‚ !, %vText%, 31,1
 		return true
 	}
 }
