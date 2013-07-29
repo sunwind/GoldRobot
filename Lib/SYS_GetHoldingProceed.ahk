@@ -6,7 +6,7 @@
 ;~ 否则,没有持仓就直接返回false
 SYS_GetHoldingProceed()
 {
-    global GV_HoldingDrt, Const_HoldingUp, Const_HoldingDown, Const_Nothing
+    global GV_HoldingDrt, Const_Holding_UP, Const_Holding_DOWN, Const_Nothing
 
     _numb := 1
 
@@ -67,7 +67,7 @@ SYS_GetHoldingProceed()
         if (SYS_GetHoldingProceedLevel(x1,y1,x2,y2) = Const_Nothing)
         {
             ;~ GV_HoldingDrt := SYS_GetHoldingDirection()
-            if (SYS_GetHoldingProceedLevel() = Const_HoldingDown)
+            if (SYS_GetHoldingProceedLevel() = Const_Holding_DOWN)
             {
                 _numb := -_numb
                 ;~ trace("_drt is :" . _drt,2)
@@ -77,4 +77,29 @@ SYS_GetHoldingProceed()
             break
         }
     }
+}
+
+;~ check is user have holding
+;~ returns : down ; up; nothing
+SYS_GetHoldingProceedLevel(x1 = 943 ,y1 = 183 ,x2 = 949, y2 = 187)
+{
+    Global GV_priceDownRedColor, GV_priceUpGreenColor, GV_HoldingDrt, Const_Holding_UP, Const_Holding_DOWN, Const_Nothing
+	;~ number 10's Area
+    ;~ x1 := 943
+    ;~ y1 := 183
+    ;~ x2 := 949
+    ;~ y2 := 187
+	if SYS_CheckColor(x1,y1,x2,y2,GV_priceDownRedColor)
+    {
+        GV_HoldingDrt := Const_Holding_DOWN
+    }
+    else if SYS_CheckColor(x1,y1,x2,y2,GV_priceUpGreenColor)
+    {
+        GV_HoldingDrt := Const_Holding_UP
+    }
+    else
+    {
+        GV_HoldingDrt := Const_Nothing
+    }
+	return GV_HoldingDrt
 }

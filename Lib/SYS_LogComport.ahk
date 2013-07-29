@@ -1,18 +1,18 @@
 ;~ record comport to local log file
-;~ arg: drt string , allow: "up", "down" and "ping"
+;~ arg: drt string , allow: Const_Comp_BUY_UP, Const_Comp_BUY_DOWN and Const_Comp_SELL
 SYS_LogComport(drt,isAuto = 0)
 {
-	global GV_CompNumb
+	global GV_CompNumb, Const_Comp_SELL
 
-    if (drt <> "ping")
+    if (drt <> Const_Comp_SELL)
     {
-        drt .= "Buy "
+        ;~ drt .= "Buy"
         _str := drt . "`|" . GV_CompNumb
     }
-    else if (drt = "ping")
+    else if (drt = Const_Comp_SELL)
     {
         if isAuto
-            drt .= "auto"
+            drt .= "_auto"
         _str := drt . "`|" . GV_CompNumb
     }
 	else
@@ -23,7 +23,7 @@ SYS_LogComport(drt,isAuto = 0)
 	appendStr := compTime . "`|" . _str . "`r`n"
 	try
 	{
-		FileAppend, %appendStr%, %File_Log%, CP65001
+		FileAppend, %appendStr%, %File_Log%, CP936
 	}
 	catch e
 	{

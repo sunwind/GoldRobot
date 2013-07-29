@@ -11,22 +11,20 @@ KL_SetAutoSellPrice()
     {
         if (vPrice = 1)
         {
-            vPrice := 100
+            GV_autoSellPrice := 100
         }
         else if (vPrice = 2)
         {
-            vPrice := 1000
+            GV_autoSellPrice := 1000
         }
         else if (vPrice = 3)
         {
-            vPrice := 10000
+            GV_autoSellPrice := 10000
         }
         else if (vPrice = 4)
         {
-            vPrice := 100000
+            GV_autoSellPrice := 100000
         }
-
-		global GV_autoSellPrice := vPrice
         gosub, Timer_AutoSellStart
     }
     else

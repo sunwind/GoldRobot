@@ -1,12 +1,12 @@
 ;~ buy
-;~ arg: what string allow:"up" and "down"
+;~ arg: what string allow:Const_Comp_BUY_UP and Const_Comp_BUY_DOWN
 KL_Buy(drt)
 {
-	global GV_CompMode, GV_CompNumb, Const_PRICE_UP, Const_PRICE_DOWN
+	global GV_CompMode, GV_CompNumb, Const_PRICE_UP, Const_PRICE_DOWN, Const_Comp_BUY_UP, Const_Comp_BUY_DOWN
 
 	SYS_ActiveCNIClient()
 
-	if (drt = "up")
+	if (drt = Const_Comp_BUY_UP)
 	{
 		if !GV_CompMode
 		{
@@ -24,7 +24,7 @@ KL_Buy(drt)
 		}
 
 	}
-	else if (drt = "down")
+	else if (drt = Const_Comp_BUY_DOWN)
 	{
 		if !GV_CompMode
 		{
@@ -62,7 +62,7 @@ KL_Buy(drt)
 		Send, {click 58, 358}{Tab}
 	}
 	SYS_CompFinish()
-	if trace("buying and click`nGV_CompMode: " . GV_CompMode,2)
+	;~ if trace("buying and click`nGV_CompMode: " . GV_CompMode,2)
 	SYS_Click("ok")
 
 	SYS_LogComport(drt)

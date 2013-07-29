@@ -1,7 +1,7 @@
 ;~ Just Ping Cang with line number
 KL_Sell(lineNumb, isAuto = 0)
 {
-	global GV_priceDownRedColor, GV_priceUpGreenColor, GV_HoldingDrt, GV_CompMode, Const_HoldingUp, Const_HoldingDown, Const_Nothing
+	global GV_priceDownRedColor, GV_priceUpGreenColor, GV_HoldingDrt, GV_CompMode, Const_Holding_UP, Const_Holding_DOWN, Const_Nothing, Const_Comp_SELL
 
 	SYS_GetHoldingDirection()
 
@@ -59,10 +59,10 @@ KL_Sell(lineNumb, isAuto = 0)
 	SYS_Click("ok")
 	SYS_CompFinish()
 
-	if isAuto
-		SYS_LogComport("ping",1) ; is auto sell
-	else
-		SYS_LogComport("ping")
+	;~ if isAuto
+		SYS_LogComport(Const_Comp_SELL,isAuto) ; is auto sell
+	;~ else
+		;~ SYS_LogComport(Const_Comp_SELL)
 
 	return 1
 }

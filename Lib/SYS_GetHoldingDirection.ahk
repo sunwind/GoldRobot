@@ -2,7 +2,7 @@
 ;~ returns : down ; up; nothing
 SYS_GetHoldingDirection()
 {
-    Global GV_HoldingBGColor, GV_HoldingDrt, Const_HoldingUp, Const_HoldingDown, Const_Nothing
+    Global GV_HoldingBGColor, GV_HoldingDrt, Const_Holding_UP, Const_Holding_DOWN, Const_Nothing
 
     SYS_ActiveCNIClient()
     ;~ 检查空单
@@ -17,13 +17,13 @@ SYS_GetHoldingDirection()
 	else if (_colorDown <> GV_HoldingBGColor)
 	{
 		;~ 持有空单
-		GV_HoldingDrt := Const_HoldingDown
+		GV_HoldingDrt := Const_Holding_DOWN
         ;~ return GV_HoldingDrt
 	}
 	else if (_colorUp <> GV_HoldingBGColor)
     {
         ;~ 持有多单
-        GV_HoldingDrt := Const_HoldingUp
+        GV_HoldingDrt := Const_Holding_UP
         ;~ return GV_HoldingDrt
     }
     else
