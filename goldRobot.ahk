@@ -18,7 +18,7 @@ Process, Priority, , High
 SetBatchLines, -1
 SetDefaultMouseSpeed, 0
 SetMouseDelay, 0
-;~ SetKeyDelay, 0
+SetKeyDelay, 0
 SetTitleMatchMode, 1
 CoordMode, Window
 ;~ SendMode Input
