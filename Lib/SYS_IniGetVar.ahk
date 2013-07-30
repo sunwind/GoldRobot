@@ -51,8 +51,8 @@ SYS_IniGetVar()
 		;~ IniWrite, %GV_iSkyPath%, %File_Ini%, Clients, iSkyPath
     }
 
-	IniRead, GV_CompMode, %File_Ini%, GlobalVars, ComportMode, 5
-	if (GV_CompMode = 5)
+	IniRead, GV_CompMode, %File_Ini%, GlobalVars, ComportMode, -1
+	if (GV_CompMode = -1)
 		KL_SetCompMode()
 
 	IniRead, GV_CompNumb, %File_Ini%, GlobalVars, ComportNumber, 0

@@ -7,7 +7,7 @@ KL_SetCompNumb()
     Global File_Ini, GV_CompNumb
 
 
-	InputBox, newNumb, 设置开仓数量,请输入您每次开仓的手数`n当前为: %GV_CompNumb%,, 400,200
+	InputBox, newNumb, 设置开仓数量,请输入您每次开仓的手数`(1`-10`)`.`n`n当前为: %GV_CompNumb%,, 400,200
 	if Errorlevel
     {
 		Trace("开仓手数`n没有更改")

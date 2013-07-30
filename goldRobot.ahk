@@ -25,8 +25,8 @@ CoordMode, Window
 
 ; [SYS] autostart section
 SplitPath, A_ScriptFullPath, SYS_ScriptNameExt, SYS_ScriptDir, SYS_ScriptExt, SYS_ScriptNameNoExt, SYS_ScriptDrive
-SYS_ScriptVersion = 1.2.3.3
-SYS_ScriptBuild = 2013-7-29
+SYS_ScriptVersion = 1.2.3.5
+SYS_ScriptBuild = 2013-7-30
 SYS_ScriptInfo = %SYS_ScriptNameNoExt% %SYS_ScriptVersion%
 
 ;~ [Files]
@@ -64,29 +64,37 @@ Const_Comp_SELL := "Const_Comp_SELL"
 GV_CNIClientPath := 0
 GV_iSkyPath := 0
 
+;~ 自动平仓级别
 GV_autoSellPrice := 10000
+
+;~ 开仓/平仓 模式
 GV_CompMode := 0
+
+;~ 开仓手数
 GV_CompNumb := 1
 
-;~ Cancels every actions right now
+;~ 立即停止扫描价格.可终止当前的自动开仓操作.
 GV_isBusy := 0
 
 ;~ 持仓方向,指持有多单还是空单
 GV_HoldingDrt := 0
+
 ;~ 持仓目前的盈利级别,以位数表示,盈利时为正数,亏损为负数
 GV_HoldingProceedLevel := 0
 
+;~ 价格变化的颜色
 GV_priceUpGreenColor := "0x009401"
 GV_priceDownRedColor := "0x0000F0"
 ;~ GV_priceNormalColor := "0xE2C1D0"
 
-;~ if the point not this color mast be holding
+;~ 持仓栏第一行的背景颜色
 GV_HoldingBGColor := "0xF3DEE7"
 
+;~ 当前价格变化的方向
 GV_PriceDrt := Const_Nothing
 ;~ GV_fontBlackColor := "0x000000"
 
-;~ Toggle auto Sell running
+;~ 当前是否正在自动平仓
 GV_isAutoSelling := 0
 
 
@@ -106,7 +114,7 @@ SetTimer, HL_UpdateInfoTip, 2000
 return
 
 ;~ /* hotkey */
-;~ buy
+;~ [开仓操作]
 ^NumpadAdd::
 	;~ trace("buy return: " . KL_Buy(Const_Comp_BUY_UP))
 	KL_Buy(Const_Comp_BUY_UP)
@@ -117,7 +125,7 @@ return
 	KL_Buy(Const_Comp_BUY_DOWN)
 return
 
-;~ sell
+;~ [平仓操作]
 ^Numpad1::
 	KL_Sell(1)
 return
@@ -134,7 +142,7 @@ return
 	KL_Sell(5)
 return
 
-;~ option
+;~ [系统选项]
 !0::
 	KL_SetAutoSellPrice()
 return
@@ -145,7 +153,8 @@ return
 	KL_SetCompMode()
 return
 
-;~ system
+;~ [系统操作]
+;~ 设置iSky窗口
 #^f::
 	KL_ISkyWinFormat()
 return
@@ -157,18 +166,18 @@ return
 
 
 ;~ [Timer and Handler]
-;~ Stop Auto Ping Cang
+;~ 停止自动平仓
 Timer_AutoSellStop:
 	trace("自动平仓 `- 关闭")
 	SetTimer, Handler_AutoSell, Off
 return
 
-;~ Start Auto Ping Cang
+;~ 开始自动平仓
 Timer_AutoSellStart:
 	;~ SetTimer, Handler_AutoSell, Off
-	;~ 新算法让扫描一次的时间减少到100ms以内,可以快速扫描
+	;~ 新算法让扫描一次的时间减少到200ms以内,可以快速扫描
 	;~ 但要注意平仓操作的延迟,不过较长的平仓延迟将会自动缓存
-	;~ 所以这里可以设置到500ms左右
+	;~ 最好不要小于300ms的频率
 	gosub, Handler_AutoSell
 	SetTimer, Handler_AutoSell, 500
 return
@@ -220,11 +229,11 @@ HL_UpdateInfoTip:
 	{
 		if GV_CompMode
 		{
-			Trace("常规模式`(按Alt 2修改`/取消`) 自动手数`: " . GV_CompNumb,3)
+			Trace("智能模式 手数`: " . GV_CompNumb,3)
 		}
 		else
 		{
-			Trace("快速模式`(按Alt 2修改`/取消`) 自动手数`: " . GV_CompNumb,3)
+			Trace("快速模式 手数`: " . GV_CompNumb,3)
 		}
 	}
 	else IfWinNotActive, ahk_class SunAwtFrame
@@ -241,6 +250,10 @@ TRAY_SetMenus:
 	Menu,tray,Tip, %SYS_ScriptInfo%
 	Menu,tray,Add, 关于 %SYS_ScriptInfo%, Handler_Help
 	Menu,tray,Add ;The line
+	Menu,tray,Add, 更改手数, Handler_SetCompNumb
+	Menu,tray,Add, 更改模式, Handler_SetCompMode
+	Menu,tray,Add ;The line
+	Menu,tray,Add, 重启程序, Handler_Reload
 	Menu,tray,Add, 退出, SYS_Exit
 return
 
@@ -250,7 +263,15 @@ Handler_Help:
 		Run, %File_Readme%
 return
 
-SYS_Reload:
+Handler_SetCompNumb:
+KL_SetCompNumb()
+return
+
+Handler_SetCompMode:
+KL_SetCompMode()
+return
+
+Handler_Reload:
 	Reload
 return
 
