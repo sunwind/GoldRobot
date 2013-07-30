@@ -1,13 +1,13 @@
 
 OpenWin_iSky()
 {
-	global GV_iSkyPath
+	global GV_iSkyPath, Const_Nothing
 
 	SYS_CompReady()
 
-	if (GV_iSkyPath = "nothing") or !GV_iSkyPath
+	if (GV_iSkyPath = Const_Nothing) or !GV_iSkyPath
     {
-		Trace("iSky client not found")
+		Trace("找不到iSky客户端")
 		return 0
 	}
 
@@ -20,7 +20,7 @@ OpenWin_iSky()
 		}
 		catch
 		{
-			Trace("iSky client not found")
+			Trace("找不到iSky客户端")
 			return 0
 		}
 	}
@@ -30,7 +30,7 @@ OpenWin_iSky()
 	{
 		Sleep, 500
 		MouseGetPos,_x,_y,_win
-		Send, {Click 133,40}
+		Send, {Click 130,40}
 		MouseMove, _x,_y
 	}
 	SYS_CompFinish()

@@ -176,7 +176,7 @@ return
 Handler_AutoSell:
 	;~ TM_MSec_Before := A_TickCount
 	;~ trace("Handler_AutoSell`nSYS_GetHoldingDirection: " . SYS_GetHoldingDirection().2)
-	
+
 	;~ SYS_GetHoldingDirection是快速的方法
 	if SYS_GetHoldingDirection() = Const_Nothing
 	{
@@ -184,8 +184,8 @@ Handler_AutoSell:
 		return
 	}
 
-	trace("正在进行`n自动平仓",4)
-	
+	trace("自动平仓`(按Alt 0取消`)",4)
+
 	;~ 新版的检查盈亏情况算法也是相当快速的
 	_newPro := SYS_GetHoldingProceedNew()
 
@@ -194,13 +194,13 @@ Handler_AutoSell:
 		;~ [TODO] if losing, 10000 is the line
 		_newPro /= 10
 		;~ Lost
-		Trace("自动平仓中!`n亏损`n" . _newPro . "`n目标线: " . GV_autoSellPrice)
+		Trace("自动平仓中!`n亏损`: " . _newPro . "`n目标线: " . GV_autoSellPrice)
 
 	}
 	else
 	{
 		;~ Proceeds
-		Trace("自动平仓中!`n获利`n" . _newPro . "`n目标线: " . GV_autoSellPrice)
+		Trace("自动平仓中!`n获利`: " . _newPro . "`n目标线: " . GV_autoSellPrice)
 	}
 	;~ Trace("Auto Ping Cang ing",3)
 	;~ TM_MSec_After := A_TickCount
@@ -220,11 +220,11 @@ HL_UpdateInfoTip:
 	{
 		if GV_CompMode
 		{
-			Trace("常规模式 with " . GV_CompNumb,3)
+			Trace("常规模式`(按Alt 2修改`/取消`) 自动手数`: " . GV_CompNumb,3)
 		}
 		else
 		{
-			Trace("快速模式 with " . GV_CompNumb,3)
+			Trace("快速模式`(按Alt 2修改`/取消`) 自动手数`: " . GV_CompNumb,3)
 		}
 	}
 	else IfWinNotActive, ahk_class SunAwtFrame

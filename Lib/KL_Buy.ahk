@@ -5,7 +5,7 @@ KL_Buy(drt)
 	global GV_CompMode, GV_CompNumb, Const_PRICE_UP, Const_PRICE_DOWN, Const_Comp_BUY_UP, Const_Comp_BUY_DOWN
 
 	SYS_ActiveCNIClient()
-	
+
 	if (drt = Const_Comp_BUY_UP)
 	{
 		if !GV_CompMode
@@ -54,7 +54,7 @@ KL_Buy(drt)
 	{
 		SetKeyDelay, 1
 		SetMouseDelay, 1
-		
+
 		WinActivate, ahk_class SunAwtDialog
 		Sleep, 200
 		Send, {Click 183, 149} ;click the comprot number
@@ -63,7 +63,7 @@ KL_Buy(drt)
 		Send, %GV_CompNumb%
 		Send, {Tab}
 		Send, {click 58, 358}{Tab}
-		
+
 		SetKeyDelay, 0
 		SetMouseDelay, 0
 	}

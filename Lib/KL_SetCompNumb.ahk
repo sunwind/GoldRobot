@@ -10,7 +10,7 @@ KL_SetCompNumb()
 	InputBox, newNumb, 设置开仓数量,请输入您每次开仓的手数`n当前为: %GV_CompNumb%,, 400,200
 	if Errorlevel
     {
-		Trace("Comport Number`n NOT change!")
+		Trace("开仓手数`n没有更改")
     }
 	else
 	{

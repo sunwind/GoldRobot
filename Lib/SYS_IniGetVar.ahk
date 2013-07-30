@@ -1,20 +1,12 @@
 SYS_IniGetVar()
 {
-	global GV_CompMode,	GV_CompNumb, GV_CNIClientPath, GV_iSkyPath, File_Ini, GV_CompMode
-
-	IniRead, GV_CompMode, %File_Ini%, GlobalVars, ComportMode, 5
-	if (GV_CompMode = 5)
-		KL_SetCompMode()
-
-	IniRead, GV_CompNumb, %File_Ini%, GlobalVars, ComportNumber, 0
-	if (GV_CompNumb = 0)
-		KL_SetCompNumb()
+	global GV_CompMode,	GV_CompNumb, GV_CNIClientPath, GV_iSkyPath, File_Ini, Const_Nothing
 
 
 	IniRead, GV_CNIClientPath, %File_Ini%, Clients, CNIClientPath, 0
 	if (GV_CNIClientPath = 0)
     {
-		if !trace("How to run CNIClient`?`n`nI need it to work!`nFind it onece `,`nI'll remember it...`nThanks!",2)
+		if !trace("请指定CNIClient.exe文件路径.`n`n您只需要查找一次`,我会记住它的位置下次自动开启.",2)
 		{
 			trace("好吧,再见`~",1)
 		}
@@ -37,9 +29,9 @@ SYS_IniGetVar()
 
     if (GV_iSkyPath = 0)
     {
-		if !trace("If you using iSky`, I'll try to help you!`nClick OK to find iSky luncher onece`nI'll remember it...`nThanks!",2)
+		if !trace("如果您使用iSky系列行情软件`,我能协助您自动开启它并设置位置.`n`n您只需要查找一次`,我会记住它的位置下次自动开启.",2)
 		{
-			GV_iSkyPath := "nothing"
+			GV_iSkyPath := Const_Nothing
 			;~ trace("OK`, I'm going...",)
 		}
 		else
@@ -49,7 +41,7 @@ SYS_IniGetVar()
 			if SelectedFile =
 			{
 				Trace("你没有选择iSky`,以后不再提示`.")
-				GV_iSkyPath := "nothing"
+				GV_iSkyPath := Const_Nothing
 			}
 			else
 			{
@@ -58,6 +50,14 @@ SYS_IniGetVar()
 		}
 		;~ IniWrite, %GV_iSkyPath%, %File_Ini%, Clients, iSkyPath
     }
+
+	IniRead, GV_CompMode, %File_Ini%, GlobalVars, ComportMode, 5
+	if (GV_CompMode = 5)
+		KL_SetCompMode()
+
+	IniRead, GV_CompNumb, %File_Ini%, GlobalVars, ComportNumber, 0
+	if (GV_CompNumb = 0)
+		KL_SetCompNumb()
 
 	SYS_IniWrite(1) ; force to save
 

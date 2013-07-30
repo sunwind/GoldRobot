@@ -15,13 +15,13 @@ SYS_GetHoldingProceedNew()
     ;~ 小于950大于957的是百位数,百位数之后有一个逗号3像素
     ;~ 小于957大于964+3=967的是千位数
     ;~ 小于967大于974的是万
-    
+
     x1 := 919
     x2 := 950
-    
+
     y1 := 183
     y2 := y1
-    
+
     ;~ 所以这里只需要扫描一次就可以知道颜色的坐标,用位置可以判断是几位数
     try
     {
@@ -32,8 +32,8 @@ SYS_GetHoldingProceedNew()
         if (ErrorLevel = 0)
         {
             ;~ trace("找到了: 盈利绿色`nx: " . proX . "`ny: " . proY)
-            
-           
+
+
             if proX < 926
                 return 10000
             else if proX between 926 and 936
@@ -52,7 +52,7 @@ SYS_GetHoldingProceedNew()
             if (ErrorLevel = 0)
             {
                 ;~ trace("找到了: 亏损红色`nx: " . proX . "`ny: " . proY)
-                
+
                 if proX < 926
                 {
                     return -10000
