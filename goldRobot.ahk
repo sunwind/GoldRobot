@@ -18,15 +18,15 @@ Process, Priority, , High
 SetBatchLines, -1
 SetDefaultMouseSpeed, 0
 SetMouseDelay, 0
-SetKeyDelay, 0
+;~ SetKeyDelay, 0
 SetTitleMatchMode, 1
 CoordMode, Window
 ;~ SendMode Input
 
 ; [SYS] autostart section
 SplitPath, A_ScriptFullPath, SYS_ScriptNameExt, SYS_ScriptDir, SYS_ScriptExt, SYS_ScriptNameNoExt, SYS_ScriptDrive
-SYS_ScriptVersion = 1.2.3.6
-SYS_ScriptBuild = 2013-8-2
+SYS_ScriptVersion = 1.3.0.1
+SYS_ScriptBuild = 2013-8-1
 SYS_ScriptInfo = %SYS_ScriptNameNoExt% %SYS_ScriptVersion%
 
 ;~ [Files]
@@ -88,7 +88,8 @@ GV_priceDownRedColor := "0x0000F0"
 ;~ GV_priceNormalColor := "0xE2C1D0"
 
 ;~ 持仓栏第一行的背景颜色
-GV_HoldingBGColor := "0xF3DEE7"
+GV_HoldingBGColorOne := "0xF3DEE7"
+GV_HoldingBGColorTwo := "0xF3F3F3"
 
 ;~ 当前价格变化的方向
 GV_PriceDrt := Const_Nothing
@@ -129,23 +130,17 @@ return
 ^Numpad1::
 	KL_Sell(1)
 return
-^Numpad2::
-	KL_Sell(2)
-return
-^Numpad3::
-	KL_Sell(3)
-return
-^Numpad4::
-	KL_Sell(4)
-return
-^Numpad5::
-	KL_Sell(5)
-return
 
-;~ [系统选项]
 !0::
 	KL_SetAutoSellLevel()
 return
+
+;~ 收取利润,只平盈利的仓位
+!9::
+	gosub, KL_AutoSellProfit
+return
+
+;~ [系统选项]
 !1::
 	KL_SetCompNumb()
 return
@@ -165,7 +160,17 @@ return
 	ExitApp
 
 
+
+
+
 ;~ [Timer and Handler]
+;~ 收割盈利的仓位
+KL_AutoSellProfit:
+while SYS_SellHoldingWhat(1)
+	Sleep, 1000
+return
+
+
 ;~ 停止自动平仓
 Timer_AutoSellStop:
 	trace("自动平仓 `- 关闭")
@@ -179,7 +184,7 @@ Timer_AutoSellStart:
 	;~ 但要注意平仓操作的延迟,不过较长的平仓延迟将会自动缓存
 	;~ 最好不要小于300ms的频率
 	;~ gosub, Handler_AutoSell
-	SetTimer, Handler_AutoSell, 500
+	SetTimer, Handler_AutoSell, 1000
 return
 
 Handler_AutoSell:
@@ -204,7 +209,6 @@ Handler_AutoSell:
 		_newPro /= 10
 		;~ Lost
 		Trace("自动平仓中!`n亏损`: " . _newPro . "`n目标线: " . GV_autoSellPrice)
-
 	}
 	else
 	{
@@ -216,8 +220,14 @@ Handler_AutoSell:
 	;~ if Trace("耗时: " . TM_MSec_After - TM_MSec_Before . " 毫秒")
 	if (abs(_newPro) >= GV_autoSellPrice)
 	{
+		;~ if !trace("看看",2)
 		KL_Sell(1,1) ; is auto sell
 
+		;~ 快速批量平仓时偶尔会出现已经平了的仓位仍在第一行显式
+		;~ 临时的增加延迟解决这个问题
+		;~ 最安全的办法是检查多行的盈利情况再批量平仓
+		;~ 但这样涉及到多行检查的问题,以后再说
+		;~ Sleep, 1000
 		;~ when user sell will stop autosell, so here keep run
 		gosub, Timer_AutoSellStart
 		return

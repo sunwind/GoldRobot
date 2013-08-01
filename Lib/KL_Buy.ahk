@@ -57,7 +57,7 @@ KL_Buy(drt)
 
 		WinActivate, ahk_class SunAwtDialog
 		Sleep, 200
-		Send, {Click 180, 149} ;click the comprot number
+		Send, {Click 183, 149} ;click the comprot number
 		Send, {End}
 		Send, +{Home}
 		Send, %GV_CompNumb%
