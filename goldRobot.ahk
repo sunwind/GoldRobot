@@ -25,8 +25,8 @@ CoordMode, Window
 
 ; [SYS] autostart section
 SplitPath, A_ScriptFullPath, SYS_ScriptNameExt, SYS_ScriptDir, SYS_ScriptExt, SYS_ScriptNameNoExt, SYS_ScriptDrive
-SYS_ScriptVersion = 1.2.3.5
-SYS_ScriptBuild = 2013-7-30
+SYS_ScriptVersion = 1.2.3.6
+SYS_ScriptBuild = 2013-8-2
 SYS_ScriptInfo = %SYS_ScriptNameNoExt% %SYS_ScriptVersion%
 
 ;~ [Files]
@@ -144,7 +144,7 @@ return
 
 ;~ [系统选项]
 !0::
-	KL_SetAutoSellPrice()
+	KL_SetAutoSellLevel()
 return
 !1::
 	KL_SetCompNumb()
@@ -178,7 +178,7 @@ Timer_AutoSellStart:
 	;~ 新算法让扫描一次的时间减少到200ms以内,可以快速扫描
 	;~ 但要注意平仓操作的延迟,不过较长的平仓延迟将会自动缓存
 	;~ 最好不要小于300ms的频率
-	gosub, Handler_AutoSell
+	;~ gosub, Handler_AutoSell
 	SetTimer, Handler_AutoSell, 500
 return
 
