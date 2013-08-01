@@ -68,7 +68,7 @@ GV_iSkyPath := 0
 GV_autoSellPrice := 10000
 
 ;~ 开仓/平仓 模式
-GV_CompMode := 0
+GV_CompMode := 1
 
 ;~ 开仓手数
 GV_CompNumb := 1
@@ -287,7 +287,7 @@ return
 
 on_Exit:
 	;~ trace("I'm leaving~")
-	SYS_IniWrite(1)
+	SYS_IniWrite()
 	SetTimer, HL_UpdateInfoTip, Off
 	ExitApp
 

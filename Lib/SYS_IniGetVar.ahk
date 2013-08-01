@@ -51,15 +51,15 @@ SYS_IniGetVar()
 		;~ IniWrite, %GV_iSkyPath%, %File_Ini%, Clients, iSkyPath
     }
 
-	IniRead, GV_CompMode, %File_Ini%, GlobalVars, ComportMode, -1
-	if (GV_CompMode = -1)
-		KL_SetCompMode()
+	;~ IniRead, GV_CompMode, %File_Ini%, GlobalVars, ComportMode, -1
+	;~ if (GV_CompMode = -1)
+		;~ KL_SetCompMode()
 
-	IniRead, GV_CompNumb, %File_Ini%, GlobalVars, ComportNumber, 0
-	if (GV_CompNumb = 0)
-		KL_SetCompNumb()
+	;~ IniRead, GV_CompNumb, %File_Ini%, GlobalVars, ComportNumber, 0
+	;~ if (GV_CompNumb = 0)
+		;~ KL_SetCompNumb()
 
-	SYS_IniWrite(1) ; force to save
+	SYS_IniWrite() ; force to save
 
 	if !trace("你好~`n我准备好了!`n`n点击确定`,我开始工作`.",2)
 		ExitApp

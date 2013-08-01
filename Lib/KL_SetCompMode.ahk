@@ -39,6 +39,8 @@ getCompModeName()
 {
 	global GV_CompMode
 	
+	str_CompMode := ""
+	
 	if (GV_CompMode = 0)
 	{
 		str_CompMode := "快速模式"
